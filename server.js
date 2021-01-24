@@ -1,35 +1,15 @@
-const fs = require('fs');
-const Contact = require('./data/Contact');
-const { promisify } = require('util')
+const express = require('express');
+const apiRoutes = require('./routes/apiRoutes');
+const htmlRoutes = require('./routes/htmlRoutes');
 
-const readFileAsync = promisify(fs.readFile);
-const writeFileAsync = promisify(fs.writeFile);
-const getNewEntry = () => {
-    
-    return new Promise((resolve, reject)=>{
-        setTimeout(() => {
-            resolve(new Contact("Trudy", "555-555-5555"));
-            reject(new Error('could not retrieve contact'));
-        }, 500);
-    });
-}
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const run = async () => {
-    try {
-    let list = await readFileAsync('./contacts.txt', 'utf-8');
-    let contact = await getNewEntry();
-        
-    list=list+`\n${contact.name}, ${contact.number}`;
-    let log = await writeFileAsync('./data/contacts.json', list, (err) => {
-        if (err) throw err;
-        console.log('The file has been saved!');
-      });
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
 
-    }
-    catch(err) {
-        console.log("Error: ", err.message);
 
-    }
-}
-
-run();
+app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
