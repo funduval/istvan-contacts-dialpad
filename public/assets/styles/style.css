@@ -1,3 +1,31 @@
+#root-app{
+background-color: blueviolet;
+}
+
 #x{
     font-size:3em;
+   
+}
+
+#star > span.letterString,#one > span.letterString,#ten > span.letterString ,#pound > span.letterString{
+    color:transparent;
+}
+
+
+
+button.dial-btn{
+    background-color: transparent;
+    font-size: 18px; 
+    border: solid 1px black; 
+    width:6em;height:6em;
+    background-color:none;
+
+}
+
+span.letters{
+    display:block;
+}
+
+span.numbers{
+    display:block;
 }
