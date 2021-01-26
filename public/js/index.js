@@ -64,8 +64,6 @@ function addButtonElement (number, registry) {
   }
 
    customElements.define('dialpad-button', DialpadButton, { extends: "button" });
-   let cached;
-
 
    for(index in registry){   
     let dialpadButton = document.createElement('button', { is : 'dialpad-button' });
@@ -110,7 +108,4 @@ function addButtonElement (number, registry) {
         }
                  
       }
-
-      console.log("cached", cached.getAttribute('id'));
-
 }

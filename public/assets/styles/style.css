@@ -1,5 +1,9 @@
 #root-app{
-background-color: blueviolet;
+    color:white;
+    margin-top:10%;
+    background: linear-gradient(-20deg,#251285,#3d5afe,#04e7e7);
+   
+
 }
 
 #x{
@@ -11,14 +15,40 @@ background-color: blueviolet;
     color:transparent;
 }
 
+#search{
+    height:300px;
+    text-align: center;
 
+   
+
+}
+h1{
+    text-align: center;
+    margin-top: 40px;
+}
+
+#display{
+    height:80px;
+    background-color: #3d5afe;
+
+}
+
+#pad{
+    width:100%;
+    padding-left: 0;
+    padding-right: 0;
+
+}
 
 button.dial-btn{
     background-color: transparent;
+    padding:10px;
     font-size: 18px; 
-    border: solid 1px black; 
-    width:6em;height:6em;
-    background-color:none;
+    border: solid 1px; 
+    border-color: rgb(160,160,255);
+    width:33.33%;
+    height:80px;
+    color:rgb(160,160,255);
 
 }
 
@@ -29,3 +59,9 @@ span.letters{
 span.numbers{
     display:block;
 }
+
+.toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
+  .toggle.ios .toggle-handle { border-radius: 20px; }
+
+  .toggle.android { border-radius: 0px;}
+  .toggle.android .toggle-handle { border-radius: 0px; }
