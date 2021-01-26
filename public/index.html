@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/styles/style.css">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -16,31 +18,39 @@
 
 <body>
     <div class="container">
-        <div class="row">
-            <div id="root-app" class="col-md-8 offset-md-2">
-                <div class="row">
-
+        <div id="wrapper-row" class="row">
+            <div id="root-app" class="col-md-6 offset-md-3">
+                <div id="search-row" class="row">
                     <div id="search" class="col-sm-12">
                         <h1>Find Contacts</h1>
-
-                        <input type="checkbox" checked data-toggle="toggle" data-style="android" data-onstyle="info">
-
+                        <div class="toggle-wrapper">
+                        <div id="by-name" class="toggle-parts">By name</div>
+                        <div class="toggle-parts">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div id="by-number" class="toggle-parts">By number</div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
+                <div id="display-row" class="row">
                     <div id="display" class="col-sm-12">
-
+                        <img src="/assets/symbols/delete.svg" alt="delete-left" class="delete-symbol">
                     </div>
                 </div>
-                <div class="row">
+                <div id="pad-row" class="row">
                     <div id="pad" class="col-sm-12">
-
+                    </div>
+                </div>
+                <div id="results-row" class="row">
+                    <div id="results" class="col-sm-12">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
@@ -48,6 +58,8 @@
         integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/index.js"></script>
+    <!-- <script type="text/javascript" src="/js/dictionary.js"></script> -->
+
 </body>
 
 </html>

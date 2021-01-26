@@ -35,12 +35,12 @@
 
       .cls-2 {
         fill: none;
-        stroke: #000;
-        stroke-width: 4.5px;
+        stroke: #fff;
+        stroke-width: 3.5px;
       }
 
       .cls-2, .cls-3 {
-        fill-rule: evenodd;
+        fill: evenodd;
       }
     </style>
     <filter id="filter" filterUnits="userSpaceOnUse">

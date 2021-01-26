@@ -51,11 +51,11 @@ document.body.onload = function(){
   let registry = dialpad.assignButtonsValues();
 
   console.log("dialpad registry",registry);
-  addButtonElement(2,registry);
+  drawButtonElements(2,registry);
 };
 
 
-function addButtonElement (number, registry) {
+function drawButtonElements (number, registry) {
   class DialpadButton extends HTMLButtonElement {
     constructor() {
       super();
@@ -67,22 +67,30 @@ function addButtonElement (number, registry) {
 
    for(index in registry){   
     let dialpadButton = document.createElement('button', { is : 'dialpad-button' });
+
         dialpadButton.setAttribute('letterString', registry[index].join(" "));
         dialpadButton.setAttribute('numberString', index);
         dialpadButton.setAttribute('role', 'dial');
         dialpadButton.setAttribute('class', 'dial-btn');
+
         let assignedNumber = document.createElement('span');
         assignedNumber.setAttribute('class','numbers');
+
         let letterString = dialpadButton.getAttribute('letterString') || 'X X X';
         let numberString = dialpadButton.getAttribute('numberString') === '10' ? '0' : dialpadButton.getAttribute('numberString');
+
         let assignedLetters = document.createElement('span');
+
         assignedNumber.innerHTML = numberString
         assignedLetters.innerHTML = letterString ;
+
         assignedLetters.setAttribute('class','letterString');
         dialpadButton.appendChild(assignedNumber);
         dialpadButton.appendChild(assignedLetters);
-        let dummyRow = document.getElementById("dummy-btns");
+
         let numbersRow = document.getElementById("pad");
+
+        //handle keys that have no letters. Would like to makethis more dynamic;
 
         if (index==="1"){
           dialpadButton.setAttribute('id', 'one');
@@ -105,7 +113,76 @@ function addButtonElement (number, registry) {
         } else {
           dialpadButton.setAttribute('id', registry[index].join("_"));
           numbersRow.appendChild(dialpadButton);   
-        }
-                 
+        }            
       }
 }
+
+class Node {
+  constructor(){
+    this.keys = new Map();
+    this.end = false;
+    this.setEnd = function() {
+      this.end = true;
+    };
+    this.isEnd = function() {
+      return this.end;
+    };
+  }
+};
+
+class Trie {
+
+	constructor(){
+    this.root = new Node();
+  
+
+	this.add = function(input, node = this.root) {
+		if (input.length == 0) {
+			node.setEnd();
+			return;
+		} else if (!node.keys.has(input[0])) {
+			node.keys.set(input[0], new Node());
+			return this.add(input.substr(1), node.keys.get(input[0]));
+		} else {
+			return this.add(input.substr(1), node.keys.get(input[0]));
+		};
+	};
+
+	this.isWord = function(word) {
+		let node = this.root;
+		while (word.length > 1) {
+			if (!node.keys.has(word[0])) {
+				return false;
+			} else {
+				node = node.keys.get(word[0]);
+				word = word.substr(1);
+			};
+		};
+		return (node.keys.has(word) && node.keys.get(word).isEnd()) ? 
+      true : false;
+	};
+
+	this.print = function() {
+		let words = new Array();
+		let search = function(node, string) {
+			if (node.keys.size != 0) {
+				for (let letter of node.keys.keys()) {
+					search(node.keys.get(letter), string.concat(letter));
+				};
+				if (node.isEnd()) {
+					words.push(string);
+				};
+			} else {
+				string.length > 0 ? words.push(string) : undefined;
+				return;
+			};
+		};
+		search(this.root, new String());
+		return words.length > 0 ? words : mo;
+  };
+ 
+  
+}
+
+};
+
