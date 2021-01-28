@@ -1,5 +1,5 @@
 const contactsRoutes = (app, fs) => {
-    const dataPath = './public/data/contacts.json';
+    const dataPath = './db/contacts.json';
   
     app.get('/api/contacts', (req, res) => {
       fs.readFile(dataPath, 'utf8', (err, data) => {
