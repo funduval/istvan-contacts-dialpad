@@ -3,90 +3,90 @@
     {
         "name": "Angie",
         "number": "862-847-9392",
-        "imgUrl":"/assets/images/Angie.png"
+        "imgUrl":"/Angie.jpg"
     },
     {
         "name": "Beatrice",
         "number": "917-832-4720",
-        "imgUrl":"/assets/images/Beatrice.png"
+        "imgUrl":"/assets/images/Beatrice.jpg"
 
     },
     {
         "name": "Candice",
         "number": "862-485-3750",
-        "imgUrl":"/assets/images/Candice.png"
+        "imgUrl":"/assets/images/Candice.jpg"
 
     },
     {
         "name": "Carl",
         "number": "804-374-2719",
-        "imgUrl":"/assets/images/Carl.png"
+        "imgUrl":"/assets/images/Carl.jpg"
 
     },
     {
         "name": "Dave",
         "number": "862-124-0412",
-        "imgUrl":"/assets/images/Dave.png"
+        "imgUrl":"/assets/images/Dave.jpg"
 
     },
     {
         "name": "Eugene",
         "number": "862-193-4852",
-        "imgUrl":"/assets/images/Eugene.png"
+        "imgUrl":"/assets/images/Eugene.jpg"
 
     },
     {
         "name": "Francis",
         "number": "862-563-8282",
-        "imgUrl":"/assets/images/Francis.png"
+        "imgUrl":"/assets/images/Francis.jpg"
 
     },
     {
         "name": "Lancelot",
         "number": "862-910-3456",
-        "imgUrl":"/assets/images/Lancelot.png"
+        "imgUrl":"/assets/images/Lancelot.jpg"
 
     },
     {
         "name": "Romeo",
         "number": "726-665-2928",
-        "imgUrl":"/assets/images/Romeo.png"
+        "imgUrl":"/assets/images/Romeo.jpg"
 
     },
     {
         "name": "Tobias",
         "number": "917-485-1938",
-        "imgUrl":"/assets/images/Tobias.png"
+        "imgUrl":"/assets/images/Tobias.jpg"
 
     },
     {
         "name": "Toby",
         "number": "293-294-2947",
-        "imgUrl":"/assets/images/Toby.png"
+        "imgUrl":"/assets/images/Toby.jpg"
 
     },
     {
         "name": "Tony",
         "number": "862-345-6789",
-        "imgUrl":"/assets/images/Tony.png"
+        "imgUrl":"/assets/images/Tony.jpg"
 
     },
     {
         "name": "Uncle Mike",
         "number": "212-395-4957",
-        "imgUrl":"/assets/images/Uncle Mike.png"
+        "imgUrl":"/assets/images/Uncle Mike.jpg"
 
     },
     {
         "name": "Zelda",
         "number": "234-987-6547",
-        "imgUrl":"/assets/images/Zelda.png"
+        "imgUrl":"/assets/images/Zelda.jpg"
 
     },
     {
         "name": "Ziggy",
         "number": "234-765-2323",
-        "imgUrl":"/assets/images/Ziggy.png"
+        "imgUrl":"/assets/images/Ziggy.jpg"
 
     }
 ]

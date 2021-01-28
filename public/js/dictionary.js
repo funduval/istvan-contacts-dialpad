@@ -13,8 +13,9 @@ class DictionaryNode {
   };
   
 class DictionaryTrie {
-    constructor(){
+    constructor(values=[]){
     this.root = new DictionaryNode();
+    this.values = values;
     }
 
     add (input, node = this.root) {
@@ -28,6 +29,13 @@ class DictionaryTrie {
             return this.add(input.substr(1), node.children.get(input[0]));
         };
     };
+
+    loop(){
+        let values=this.values;
+        for(char of values){
+            this.add(char);
+        }
+    }
 
     isWord (word) {
         let node = this.root;
@@ -74,8 +82,3 @@ class DictionaryTrie {
         return node.end;
     };
 };
-
-
-
-
- 
