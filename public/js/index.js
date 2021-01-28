@@ -2,10 +2,12 @@ document.body.onload = function(){
 
   let str="";
   const dialpad =  new DialPad(10)
-  let registry = dialpad.assignButtonsValues();
-
+  const registry = dialpad.assignButtonsValues();
+  const alpha = new DictionaryTrie();
+  const numeric = new DictionaryTrie();
 
   const getContacts = async () => {
+
     const response = await fetch('/api/contacts');
     const result = await response.json();
     
@@ -20,13 +22,37 @@ document.body.onload = function(){
 
     }
     drawContacts(names, numbers, images);
-    console.log(names)
+    const library = await createDictionaries(names, numbers);
 
 }
 
+const createDictionaries = async (names,numbers) => {
+  const tries={}; 
+
+  const populate = (names,numbers) => {
+    for(let n=0;n<names.length; n++){
+    names[n].toLowerCase().split('').forEach(char => {
+      alpha.add(char);
+
+    });
+
+    numbers[n].replace(/\-/g,'').split('').forEach(num => {
+      numeric.add(num);
+
+    });
+  }}
+
+  await populate(names, numbers);
+
+  tries["alpha"] = alpha;
+  tries["numeric"] = numeric;
+
+  return tries;
+}
 
 const drawContacts = (names, numbers, images) => {
   for(let k=0;k<names.length;k++){
+    
     let resultsList = document.getElementById('results')
     let resultsListItem = document.createElement('li');
     let resultsName = document.createElement('span');
@@ -36,10 +62,8 @@ const drawContacts = (names, numbers, images) => {
     resultsName.innerHTML = names[k];
     resultsListItem.appendChild(resultsName);
 
-
     let avatar = document.createElement('img');
     avatar.setAttribute('src',images[k]);
-    console.log("images[k]", images[k]);
     avatar.setAttribute('class','avatar');
     resultsListItem.appendChild(avatar)
 
@@ -62,8 +86,6 @@ const inputHandler = function(e) {
   }
 
   let parent = e.target.parentNode;
-
-  console.log("parent", parent);
 
   let letters = parent.getAttribute('letters');
   let numbers = parent.getAttribute('numbers');
@@ -92,8 +114,6 @@ const delegateEvents = (el, evt, sel, handler) => {
       }
   });
 }
-
-
   
   getContacts();
   drawButtonElements(2,registry);
