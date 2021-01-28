@@ -75,7 +75,6 @@ class DictionaryTrie {
     };
 };
 
-module.exports = DictionaryTrie;
 
 
 

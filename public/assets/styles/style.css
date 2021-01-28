@@ -5,11 +5,10 @@
     background: linear-gradient(-20deg,#251285,#3d5afe,#04e7e7);
     margin-top: 40px;
     font-family: 'Montserrat', sans-serif;
-   
 
 }
 
-#star > span.letterString,#one > span.letterString,#ten > span.letterString ,#pound > span.letterString{
+#star > span.letter-span,#one > span.letter-span,#zero> span.letter-span ,#pound > span.letter-span{
     color:transparent;
 }
 
@@ -32,12 +31,48 @@ h1{
 #display{
     background-color: #3d5afe;
     height:5em;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    position:relative;
+    
+}
+.text-wrapper{
+    display:inline-flex;
+    width:60%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    align-self: flex-start;
+}
+.text-wrapper > span{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.image-wrapper{
+ position:absolute;
+ top:50%;
+ right:10px;
+ margin-top:-12px;
+}
+
+.image-wrapper > img{
+  display:inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  align-self:flex-end;
+  width:40px;
+  height:24px;
+
 }
 
 #pad-row{
     padding-left: 0;
     padding-right: 0;
-
 
 }
 #pad{
@@ -57,23 +92,18 @@ button.dial-btn{
 
 }
 
-span.letters{
+span.letter-span{
     display:block;
     font-size: .5em; 
 
 }
 
-span.numbers{
+span.number-span{
     display:block;
     font-size: 2em; 
 
 }
-.delete-symbol{
-    display: inline;
-    float: right;
-    height: 2em;
-    
-}
+
 .switch {
     position: relative;
     display: inline-block;
