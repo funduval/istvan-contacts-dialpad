@@ -25,5 +25,7 @@ TODO: my goal was to fix the prefix function in the trie, then render everything
 
 TODO: Too much code, and I wish I could have finished and then refactored to a more "React-like" use of components in JS that can be orchestrated according to lifecycle/data changes.
 
+TODO: Z seems to be missing from dialpad. A bug I noticed after submitting.
+
 FUNCTIONALITY: The only functionality that works is: you can type numbers, can toggle between name and number, can enter a WHOLE NAME and retrieve that name first in the list, with the remainder of the list sorted. BE SURE TO: toggle slider to "By Name" first.
 
