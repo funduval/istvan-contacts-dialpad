@@ -1,23 +1,23 @@
 
 class DictionaryNode {
-    constructor(){
-      this.children = new Map();
-      this.end = false;
-      this.setEnd = function() {
-        this.end = true;
-      };
-      this.isEnd = function() {
-        return this.end;
-      };
+    constructor() {
+        this.children = new Map();
+        this.end = false;
+        this.setEnd = function () {
+            this.end = true;
+        };
+        this.isEnd = function () {
+            return this.end;
+        };
     }
-  };
-  
+};
+
 class DictionaryTrie {
-    constructor(){
-     this.root = new DictionaryNode();
+    constructor() {
+        this.root = new DictionaryNode();
     }
 
-    add (input, node = this.root) {
+    add(input, node = this.root) {
         if (input.length == 0) {
             node.setEnd();
             return;
@@ -29,8 +29,8 @@ class DictionaryTrie {
         };
     };
 
-    
-    isWord (word) {
+
+    isWord(word) {
         let node = this.root;
         while (word.length > 1) {
             if (!node.children.has(word[0])) {
@@ -40,13 +40,13 @@ class DictionaryTrie {
                 word = word.substr(1);
             };
         };
-        return (node.children.has(word) && node.children.get(word).isEnd()) ? 
-    true : false;
+        return (node.children.has(word) && node.children.get(word).isEnd()) ?
+            true : false;
     };
 
-    print () {
+    print() {
         let words = new Array();
-        let search = function(node, string) {
+        let search = function (node, string) {
             if (node.children.size != 0) {
                 for (let letter of node.children.keys()) {
                     search(node.children.get(letter), string.concat(letter));
@@ -65,11 +65,11 @@ class DictionaryTrie {
 
     searchNode(word) {
         var node = this.root;
-        for(var i = 0; i < word.length; i++) {
+        for (var i = 0; i < word.length; i++) {
             if (node.children[word[i]]) {
-            node = node.children[word[i]];
+                node = node.children[word[i]];
             } else {
-            return false;
+                return false;
             }
         }
         return node
