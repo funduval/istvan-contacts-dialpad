@@ -1,5 +1,5 @@
 document.body.onload = function(){
-  let mode="by name";
+
   let str="";
   const dialpad =  new DialPad(10)
   const registry = dialpad.assignButtonsValues();
@@ -86,10 +86,22 @@ drawButtonElements(2,registry);
 const dialAndSearch=(library,data)=>{
 
   const{alpha, numeric} = library;
+  let mode = "by number";
+
 
   const inputHandler = function(e) {
     let parent = e.target.parentNode;
+    if(parent.getAttribute('class') === 'switch'){ 
+      var checkbox = $('.switch input[type="checkbox"]');
+    if ($(checkbox).prop('checked')) {
+      mode="by number"
+      console.log("Was Checked", mode);
+    } else {
+      mode="by name"
+      console.log("Was Not Checked", mode);
+    }}
 
+    if(mode==="by name"){
     const numberToLetterCombos = (digits) => {
       let nums = digits.split('').filter((char) => {
         if (!([ "-", "0", "1", "*", "#"].includes(char))){
@@ -146,7 +158,7 @@ const dialAndSearch=(library,data)=>{
           return item["name"] === name;
         });
         let index = data.indexOf(target);
-        let remaining = data.slice(index).sort();
+        let remaining = data.slice(index+1).sort();
 
         console.log("target", target)
         contacts.push(target);
@@ -227,32 +239,84 @@ const dialAndSearch=(library,data)=>{
       };
     }
 
-      let letters = parent.getAttribute('letters');
       let number = parent.getAttribute('number');
       
       if(parent.getAttribute('class') === 'delete-image-wrapper'){
         let del = true;
         typed.innerHTML = buildInputString(number,del);
-      }if(parent.getAttribute('class') === 'switch'){
-        var checkbox = $('.switch input[type="checkbox"]');
-        if ($(checkbox).prop('checked')) {
-          console.log("Was Checked");
-          mode="by name"
-          console.log("mode",mode)      } 
-          else {
-          console.log("Was Not Checked");
-          mode="by number";
-          console.log("mode",mode)  
-      
-        }
-      
-        
-      }else{
+      }else if (parent.getAttribute('class') === 'dial-btn'){
         let del = false;
         typed.innerHTML = buildInputString(number,del);
         typed.style.letterSpacing = '5px';
 
       }
+    } else if (mode == "by number"){
+
+
+
+
+
+
+
+
+
+
+
+       const buildString = (char, del) =>{
+        let arr=[];
+        if(str.length <= 11){
+          if (str.length === 3 && !del) str += '-';
+          if (str.length === 7 && !del) str += '-';
+          if(del){
+            let editedString = str.slice(0,str.length-1);
+            str=editedString;
+  
+            arr.pop();
+            arr.push(str);
+  
+            return str;
+  
+          }else {
+            str+=char;
+            console.log("str",str)
+            
+            if(parseInt(char) > 1 && parseInt(char) <= 9){
+            arr.push(str);
+  
+            }
+  console.log('arr')
+            return str;
+  
+          }
+        }else{
+          str="";
+          return null;
+  
+        };
+      }
+  
+        let number = parent.getAttribute('number');
+        
+        if(parent.getAttribute('class') === 'delete-image-wrapper'){
+          let del = true;
+          typed.innerHTML = buildString(number,del);
+        }else if (parent.getAttribute('class') === 'dial-btn'){
+          let del = false;
+          typed.innerHTML = buildString(number,del);
+          typed.style.letterSpacing = '5px';
+  
+        }
+
+
+
+
+
+
+
+
+
+    }
+
   }
 
 
@@ -268,10 +332,9 @@ const dialAndSearch=(library,data)=>{
       });
     }
 
-    delegateEvents(document, 'onchange', 'input:checkbox', inputHandler);
+    delegateEvents(document, 'click', 'input[type="checkbox"]', inputHandler);
     delegateEvents(document, 'click', '.dial-btn', inputHandler);
     delegateEvents(document, 'click', '#delete-btn', inputHandler);
-    delegateEvents(document, 'click', '.switch input[type="checkbox"]', inputHandler);
 
   }
 }
