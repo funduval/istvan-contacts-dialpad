@@ -59,11 +59,11 @@ class DialPad {
           dialpadButton.setAttribute('letters', registry[index].join(" "));
   
           if(parseInt(index)<parseInt('10')){
-            dialpadButton.setAttribute('numbers', index)
+            dialpadButton.setAttribute('number', index)
           } else if(parseInt(index)==parseInt('10')){
-            dialpadButton.setAttribute('numbers', (parseInt(index)%10).toString())
+            dialpadButton.setAttribute('number', (parseInt(index)%10).toString())
           } else{
-            index === "*" ? dialpadButton.setAttribute('numbers', "*") : dialpadButton.setAttribute('numbers', "#")
+            index === "*" ? dialpadButton.setAttribute('number', "*") : dialpadButton.setAttribute('number', "#")
   
           }
   
@@ -74,7 +74,7 @@ class DialPad {
           assignedNumber.setAttribute('class','number-span');
   
           let letterString = dialpadButton.getAttribute('letters') || 'X X X';
-          let numberString = dialpadButton.getAttribute('numbers');
+          let numberString = dialpadButton.getAttribute('number');
   
           let assignedLetters = document.createElement('span');
   
