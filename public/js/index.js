@@ -1,5 +1,5 @@
 document.body.onload = function(){
-
+  let mode="by name";
   let str="";
   const dialpad =  new DialPad(10)
   const registry = dialpad.assignButtonsValues();
@@ -23,7 +23,7 @@ document.body.onload = function(){
     }
     drawContacts(names, numbers, images);
     const library = await createDictionaries(names, numbers);
-    dialAndSearch(library);
+    dialAndSearch(library,result.data);
 
 }
 
@@ -59,6 +59,9 @@ const drawContacts = (names, numbers, images) => {
 
     resultsListItem.setAttribute('class','list-detail');
     resultsName.setAttribute('class','list-name');
+    resultsName.setAttribute('id',names[k].toLowerCase().replace(/\s/g,""));
+
+    
     resultsName.innerHTML = names[k];
     resultsListItem.appendChild(resultsName);
 
@@ -80,7 +83,7 @@ const drawContacts = (names, numbers, images) => {
 getContacts();
 drawButtonElements(2,registry);
 
-const dialAndSearch=(library)=>{
+const dialAndSearch=(library,data)=>{
 
   const{alpha, numeric} = library;
 
@@ -125,17 +128,70 @@ const dialAndSearch=(library)=>{
       associate('', 0);
      
       combinations.forEach((word)=>{
-        if(word==="unclemike") console.log ("alpha.is",alpha.isWord(word));
-
         if(alpha.isWord(word)){
-          candidates.push(word);
+          candidates.push(word)
+        }else{
+          return
         }
-      
       });
-      console.log("candidates",candidates)
+      
+      candidates.forEach((str) => {
+        let contacts=[];
+        let name = str.replace(/\b[a-z](?=[a-z]{2})/g, function(letter) {
+          return letter.toUpperCase(); } );
 
+        let target = data.find((item) => {
+          console.log("item",item);
+          console.log("name",name)
+          return item["name"] === name;
+        });
+        let index = data.indexOf(target);
+        let remaining = data.slice(index).sort();
+
+        console.log("target", target)
+        contacts.push(target);
+        contacts.push(...remaining);
+
+        console.log("remaining", remaining);
+
+
+        document.getElementById('results').innerHTML="";
+        document.getElementById('results').style="background-color:white";
+
+
+        console.log(contacts)
+        for(let contact of contacts){
+          let resultsList = document.getElementById('results')
+          let resultsListItem = document.createElement('li');
+          let resultsName = document.createElement('span');
+
+          resultsListItem.setAttribute('class','list-detail');
+          resultsName.setAttribute('class','list-name');
+          resultsName.setAttribute('id',contact["name"].toLowerCase().replace(/\s/g,""));
+
+          
+          resultsName.innerHTML = contact["name"];
+          resultsListItem.appendChild(resultsName);
+
+          let avatar = document.createElement('img');
+          avatar.setAttribute('src',contact["imgUrl"]);
+          avatar.setAttribute('class','avatar');
+          resultsListItem.appendChild(avatar)
+
+          let phoneNumber = document.createElement('span');
+          phoneNumber.setAttribute('class','list-number');
+          phoneNumber.innerHTML = contact["number"];
+          resultsListItem.appendChild(phoneNumber)
+
+          resultsList.appendChild(resultsListItem);
+
+
+        }
+
+      });
 
       return combinations;
+
     };
 
     const buildInputString = (char, del) =>{
@@ -150,7 +206,6 @@ const dialAndSearch=(library)=>{
           combos.pop();
           let mappedCombinations = numberToLetterCombos(editedString);
           combos.push(...mappedCombinations);
-          console.log("combos in deletion", combos );
 
           return str;
 
@@ -159,7 +214,7 @@ const dialAndSearch=(library)=>{
           
           if(parseInt(char) > 1 && parseInt(char) <= 9){
           combos.push(...numberToLetterCombos(str));
-          console.log("combos in addition", combos );
+
           }
 
           return str;
@@ -178,6 +233,20 @@ const dialAndSearch=(library)=>{
       if(parent.getAttribute('class') === 'delete-image-wrapper'){
         let del = true;
         typed.innerHTML = buildInputString(number,del);
+      }if(parent.getAttribute('class') === 'switch'){
+        var checkbox = $('.switch input[type="checkbox"]');
+        if ($(checkbox).prop('checked')) {
+          console.log("Was Checked");
+          mode="by name"
+          console.log("mode",mode)      } 
+          else {
+          console.log("Was Not Checked");
+          mode="by number";
+          console.log("mode",mode)  
+      
+        }
+      
+        
       }else{
         let del = false;
         typed.innerHTML = buildInputString(number,del);
@@ -202,6 +271,7 @@ const dialAndSearch=(library)=>{
     delegateEvents(document, 'onchange', 'input:checkbox', inputHandler);
     delegateEvents(document, 'click', '.dial-btn', inputHandler);
     delegateEvents(document, 'click', '#delete-btn', inputHandler);
+    delegateEvents(document, 'click', '.switch input[type="checkbox"]', inputHandler);
 
   }
 }

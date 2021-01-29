@@ -63,7 +63,7 @@ class DictionaryTrie {
         return words.length > 0 ? words : "no words to print";
     };
 
-    openSearch(word) {
+    searchNode(word) {
         var node = this.root;
         for(var i = 0; i < word.length; i++) {
             if (node.children[word[i]]) {
@@ -72,6 +72,15 @@ class DictionaryTrie {
             return false;
             }
         }
-        return node.end;
+        return node
     };
+
+    startsWith(prefix) {
+        const node = this.searchNode(prefix);
+        if (node == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 };
