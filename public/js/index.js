@@ -34,9 +34,9 @@ const createDictionaries = async (names,numbers) => {
     for(let n=0;n<names.length; n++){
     alpha.add(names[n].toLowerCase().replace(/\s/g,""));    
 
-    numbers[n].replace(/\-/g,'').split('').forEach(num => {
-      numeric.add(num);
-    });
+    numeric.add((numbers[n].replace(/\-/g,'')));
+
+   
   }
 }
 
@@ -252,16 +252,6 @@ const dialAndSearch=(library,data)=>{
       }
     } else if (mode == "by number"){
 
-
-
-
-
-
-
-
-
-
-
        const buildString = (char, del) =>{
         let arr=[];
         if(str.length <= 11){
@@ -273,7 +263,6 @@ const dialAndSearch=(library,data)=>{
   
             arr.pop();
             arr.push(str);
-  
             return str;
   
           }else {
@@ -284,7 +273,6 @@ const dialAndSearch=(library,data)=>{
             arr.push(str);
   
             }
-  console.log('arr')
             return str;
   
           }
@@ -294,7 +282,12 @@ const dialAndSearch=(library,data)=>{
   
         };
       }
-  
+  let phoneValue;
+  console.log(phoneValue);
+
+
+
+
         let number = parent.getAttribute('number');
         
         if(parent.getAttribute('class') === 'delete-image-wrapper'){
@@ -307,16 +300,7 @@ const dialAndSearch=(library,data)=>{
   
         }
 
-
-
-
-
-
-
-
-
     }
-
   }
 
 
@@ -337,4 +321,5 @@ const dialAndSearch=(library,data)=>{
     delegateEvents(document, 'click', '#delete-btn', inputHandler);
 
   }
+
 }
