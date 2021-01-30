@@ -2,7 +2,7 @@
 
 Contacts Dialpad is a phone dialpad tool that can search based on names and numbers.
 
-<img src="https://dialpad-images.s3.amazonaws.com/dialpad.png" width="220" height="300">
+<img src="https://dialpad-images.s3.amazonaws.com/dialpad.png" width="220" height="290">
 
 ## Installation
 
