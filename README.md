@@ -17,11 +17,12 @@ npm install
 ```bash
 npm start
 ```
+
 ```
-[Visit Local Host Port](localhost:3000)
+Visit localhost:3000
 ```
 
-## TODO:
+### TODO:
 
 * Render list in numeric mode.
 * Fix the prefix function in the trie. 
@@ -31,7 +32,7 @@ npm start
 * Orchestrate components according to lifecycle/data changes.
 * Z seems is missing from dialpad.
 
-## FUNCTIONALITY: 
+### FUNCTIONALITY: 
 
 * BE SURE TO: toggle slider to "By Name" first.
 * Reads data from json file in directory.
