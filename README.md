@@ -18,7 +18,9 @@ npm install
 npm start
 ```
 
-> In your browser, visit localhost:3000
+```
+In your browser, visit localhost:3000
+```
 
 ### TODO:
 
