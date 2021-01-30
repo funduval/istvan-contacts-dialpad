@@ -2,8 +2,7 @@
 
 Contacts Dialpad is a phone dialpad tool that can search based on names and numbers.
 
-![demo image](https://dialpad-images.s3.amazonaws.com/dialpad.png)
-
+![demo image](https://dialpad-images.s3.amazonaws.com/dialpad.png){width="150px"}
 
 ## Installation
 
@@ -19,7 +18,7 @@ npm install
 npm start
 ```
 ```
-[Visit Local Host Port](actual URL to navigate)
+[Visit Local Host Port](localhost:3000)
 ```
 
 ## Incomplete
