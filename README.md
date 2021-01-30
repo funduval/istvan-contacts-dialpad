@@ -21,11 +21,8 @@ npm start
 [Visit Local Host Port](localhost:3000)
 ```
 
-## Incomplete
+## TODO:
 
-It looks pretty, but...
-
-TODO: 
 * Render list in numeric mode.
 * Fix the prefix function in the trie. 
 * Render everything sorted that matched prefix criteria. 
@@ -34,8 +31,12 @@ TODO:
 * Orchestrate components according to lifecycle/data changes.
 * Z seems is missing from dialpad.
 
-FUNCTIONALITY: 
+## FUNCTIONALITY: 
+
 * BE SURE TO: toggle slider to "By Name" first.
+* Reads data from json file in directory.
+* Sends data to /api/contacts endpoint.
+* Retrieves data for the DOM from /api/contacts endpoint.
 * You can type numbers and output all possible string combinations.
 * You can toggle between name and number.
 * You can enter a WHOLE NAME and retrieve that name first in the list, with the remainder of the list sorted. 
