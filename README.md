@@ -1,6 +1,6 @@
 # Contacts Dialpad
 
-contacts-dialpad is a phone dialpad tool that can search based on names and numbers.
+Contacts Dialpad is a phone dialpad tool that can search based on names and numbers.
 
 
 ## Installation
